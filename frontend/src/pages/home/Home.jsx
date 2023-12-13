@@ -1,8 +1,8 @@
 import { React,useState } from "react";
 import { styled } from "styled-components";
-import { Form, Select, Checkbox, Input, DatePicker, TimePicker,  Button, Flex  } from 'antd';
+import { Form, Select, Checkbox, Input, DatePicker, TimePicker,  Button, Flex, Row  } from 'antd';
 import { CalculatorOutlined } from "@ant-design/icons";
-import { Card } from 'antd';
+import { Card ,  Col } from 'antd';
 
 const { Meta } = Card;
 const HeroSectionS = styled.section`
@@ -127,19 +127,65 @@ const Home = () => {
               Réservez votre voiture à l'aéroport en 3 clics.
           </p>
          
-          <div>
-            <div>
-              <Card hoverable style={{ width: 240, }}
+          <Row style={{}}>
+            <Col span={6}>
+              <Card hoverable style={{ width: 280, margin:'20px' }}
                cover={<img alt="example" src="https://ik.imagekit.io/z90usd6mcrv7/https://www.tunisia-rent-car.com/images/car/skoda-fabia-hatch-se-crystal-black-with-black-magic-roof.webp" />} >
-                <Meta  title="SKODA FABIA" 
-                  description="Prix à partir de 23 € Jour " />
-                <span><Button style={{background:'#ffd666', margin:'25px 0 0 0'}}>NOUS CONTACTER</Button></span>
+                <Meta  title=" " 
+                  description=" " />
+                <div style={{ width: 250, backgroundColor:'#333',textAlign: 'center', color:'#fff',fontSize:'15px', letterSpacing:'1px', padding:'3px 0px 3px opx'}}>SKODA OCTAVIA</div>
+                <div style={{margin:'15px', fontSize:'15px', textAlign:'center'}}>Prix à partir de 
+                <span style={{fontsize:'30px', fontWeight:'bolder'}}> 23 €</span> jour
+                </div>
+               
+                <span><Button style={{background:'#ffd666', margin:'25px 0 0 0', width: 200}}>NOUS CONTACTER</Button></span>
               </Card>
-            </div>
+            </Col>
               
-            
+            <Col span={6}>
+              <Card hoverable style={{ width: 280, margin:'20px' }}
+               cover={<img alt="example" src="https://ik.imagekit.io/z90usd6mcrv7/https://www.tunisia-rent-car.com/images/car/vw-polo.webp" />} >
+                <Meta  title=" " 
+                  description=" " />
+                <div style={{ width: 250, backgroundColor:'#333',textAlign: 'center', color:'#fff',fontSize:'15px', letterSpacing:'1px', padding:'3px 0px 3px opx'}}>VOLKSWAGEN POLO</div>
+                <div style={{margin:'15px', fontSize:'15px', textAlign:'center'}}>Prix à partir de 
+                <span style={{fontsize:'30px', fontWeight:'bolder'}}> 25 €</span> jour
+                </div>
+               
+                <span><Button style={{background:'#ffd666', margin:'25px 0 0 0', width: 200}}>NOUS CONTACTER</Button></span>
+              </Card>
+            </Col>
 
-          </div>
+            <Col span={6}>
+              <Card hoverable style={{ width: 280, margin:'20px' }}
+               cover={<img alt="example" src="https://ik.imagekit.io/z90usd6mcrv7/https://www.tunisia-rent-car.com/images/car/polo-sedan.webp" />} >
+                <Meta  title=" " 
+                  description=" " />
+                <div style={{ width: 250, backgroundColor:'#333',textAlign: 'center', color:'#fff',fontSize:'15px', letterSpacing:'1px', padding:'3px 0px 3px opx'}}>VOLKSWAGEN POLO SEDAN</div>
+                <div style={{margin:'15px', fontSize:'15px', textAlign:'center'}}>Prix à partir de 
+                <span style={{fontsize:'30px', fontWeight:'bolder'}}> 27 €</span> jour
+                </div>
+               
+                <span><Button style={{background:'#ffd666', margin:'25px 0 0 0', width: 200}}>NOUS CONTACTER</Button></span>
+              </Card>
+            </Col>
+
+            <Col span={6}>
+              <Card hoverable style={{ width: 280, margin:'20px' }}
+               cover={<img alt="example" src="https://ik.imagekit.io/z90usd6mcrv7/https://www.tunisia-rent-car.com/images/car/skoda-octavia.webp" />} >
+                <Meta  title=" " 
+                  description=" " />
+                <div style={{ width: 250, backgroundColor:'#333',textAlign: 'center', color:'#fff',fontSize:'15px', letterSpacing:'1px', padding:'3px 0px 3px opx'}}>SKODA OCTAVIA</div>
+                <div style={{margin:'15px', fontSize:'15px', textAlign:'center'}}>Prix à partir de 
+                <span style={{fontsize:'30px', fontWeight:'bolder'}}> 45 €</span> jour
+                </div>
+               
+                <span><Button style={{background:'#ffd666', margin:'25px 0 0 0', width: 200}}>NOUS CONTACTER</Button></span>
+              </Card>
+            </Col>
+
+
+          </Row>
 
         </div>
       
