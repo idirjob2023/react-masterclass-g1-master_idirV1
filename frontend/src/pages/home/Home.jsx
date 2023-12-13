@@ -2,7 +2,9 @@ import { React,useState } from "react";
 import { styled } from "styled-components";
 import { Form, Select, Checkbox, Input, DatePicker, TimePicker,  Button, Flex  } from 'antd';
 import { CalculatorOutlined } from "@ant-design/icons";
+import { Card } from 'antd';
 
+const { Meta } = Card;
 const HeroSectionS = styled.section`
   background-image: url(https://ik.imagekit.io/z90usd6mcrv7/https://www.tunisia-rent-car.com/images/clio.webp);
   background-size: cover;
@@ -114,18 +116,34 @@ const Home = () => {
       </HeroSectionS>
       
       <ServiceSectionS>
-        <div>
-          <p style={{margin: '20px 0 10px 0',  fontWeight: '700',  fontSize: '1.4rem', textTransform: 'uppercase'}}></p>
+        <div style={{backgroundcolor:'#fff'}}> 
+          <p style={{Margin: '20px 0 10px 0',  FontWeight: '700', FontSize: '1.4rem', TextTransform: 'uppercase',textAlign: 'center'}}> <br/> PROMOTIONS </p>
           <h2 style={{textAlign: 'center',  margin: '0 0 16px', fontWeight: '400', fontSize: '2.4rem', position: 'relative', 
-                      fontFamily: 'poppins', padding: '0 8px 20px',}}>
-            Economisez 10% sur tous les transferts de l'aéroport 
+                      fontFamily: 'poppins', padding: '0 8px 20px',}}>Promotion location de voiture en Tunisie
           </h2>
          
           <p style={{textAlign: 'center', fontSize:'14px'}}> 
-              Réservez votre Taxi en Tunisie aujourd'hui et économisez votre précieux temps de vacances ! <br/>
-              Notre service de transfert privé et de navettes collectives est le moyen le plus simple et le plus pratique pour vos déplacements.<br/>
-              Evitez les interminables files d'attente pour un taxi ou un bus : en réservant dès maintenant votre navette.
+              Avec <strong>TUNISIA RENT CAR</strong>, effectuez une location voiture tunisie pas cher. Les meilleures promos de location auto tunisie.<br/>
+              Réservez votre voiture à l'aéroport en 3 clics.
           </p>
+         
+          <div>
+            <div>
+            <Card
+                hoverable
+                style={{
+                width: 240,
+                }}
+                cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
+            >
+           <Meta title="Europe Street beat" description="www.instagram.com" />
+           </Card>
+            </div>
+              
+            
+
+          </div>
+
         </div>
       
       </ServiceSectionS>
