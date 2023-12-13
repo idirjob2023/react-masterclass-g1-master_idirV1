@@ -35,8 +35,8 @@ const Navbar = () => {
 
         
       <div style={{ display: "flex", gap: "5px" }}>
-        <span>Inscription</span>
-        <span>Connexion</span>
+        <span><Button >NOUS CONTACTER</Button></span>
+        <span><Button >BESOIN D'AIDE </Button></span>
       </div>
     </NavbarS>
   );

@@ -113,7 +113,24 @@ const Home = () => {
           </div>
       </HeroSectionS>
       
-      <ServiceSectionS>hero service</ServiceSectionS>
+      <ServiceSectionS>
+        <div>
+          
+          <h2 style={{
+            textAlign: 'center', 
+            backgroundColor: 'yellow',
+          }}>
+            Economisez 10% sur tous les transferts de l'aéroport 1
+          </h2>
+        
+          <p>Réservez votre Taxi en Tunisie aujourd'hui et économisez votre précieux temps de vacances ! 
+            Notre service de transfert privé et de navettes collectives est le moyen le plus simple et le plus pratique pour vos déplacements. 
+            Evitez les interminables files d'attente pour un taxi ou un bus : en réservant dès maintenant votre navette.	
+				
+          </p>
+        </div>
+      
+      </ServiceSectionS>
 
     </div>
   );
