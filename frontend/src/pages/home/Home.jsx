@@ -115,18 +115,16 @@ const Home = () => {
       
       <ServiceSectionS>
         <div>
-          
-          <h2 style={{
-            textAlign: 'center', 
-            backgroundColor: 'yellow',
-          }}>
-            Economisez 10% sur tous les transferts de l'aéroport 1
+          <p style={{margin: '20px 0 10px 0',  fontWeight: '700',  fontSize: '1.4rem', textTransform: 'uppercase'}}></p>
+          <h2 style={{textAlign: 'center',  margin: '0 0 16px', fontWeight: '400', fontSize: '2.4rem', position: 'relative', 
+                      fontFamily: 'poppins', padding: '0 8px 20px',}}>
+            Economisez 10% sur tous les transferts de l'aéroport 
           </h2>
-        
-          <p>Réservez votre Taxi en Tunisie aujourd'hui et économisez votre précieux temps de vacances ! 
-            Notre service de transfert privé et de navettes collectives est le moyen le plus simple et le plus pratique pour vos déplacements. 
-            Evitez les interminables files d'attente pour un taxi ou un bus : en réservant dès maintenant votre navette.	
-				
+         
+          <p style={{textAlign: 'center', fontSize:'14px'}}> 
+              Réservez votre Taxi en Tunisie aujourd'hui et économisez votre précieux temps de vacances ! <br/>
+              Notre service de transfert privé et de navettes collectives est le moyen le plus simple et le plus pratique pour vos déplacements.<br/>
+              Evitez les interminables files d'attente pour un taxi ou un bus : en réservant dès maintenant votre navette.
           </p>
         </div>
       
