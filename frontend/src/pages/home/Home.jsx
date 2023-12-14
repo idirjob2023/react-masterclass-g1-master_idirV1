@@ -2,32 +2,33 @@ import { React,useState } from "react";
 import { styled } from "styled-components";
 import { Form, Select, Checkbox, Input, DatePicker, TimePicker,  Button, Flex, Row  } from 'antd';
 import { CalculatorOutlined } from "@ant-design/icons";
-import { Card ,  Col } from 'antd';
+import { Card ,  Col  } from 'antd';
 
 const { Meta } = Card;
 
 const HeroSectionS = styled.section`
   background-image: url(https://ik.imagekit.io/z90usd6mcrv7/https://www.tunisia-rent-car.com/images/clio.webp);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 650px;
-  display: flex;
+  background-size: cover; // 
+  background-repeat: no-repeat; // Image ne ce repete pas 
+  background-position: center; // centrer Image 
+  height: 650px; // taille d une Image 
+  
+  display: flex; // mettre tous en meme ligne 
   justify-content: start;
-  align-items: center; 
+  align-items: center;   // centrer le texte 
 
    .formDiv {
       background-color: rgba(255, 255, 255, 0.85);
-      width: 370px;
-      padding: 15px;
-      margin-left: 15px;
-      border-radius: 9px;
+      width: 370px; // la taille 
+      padding: 15px; 
+      margin-left: 15px; // espace a droite
+      border-radius: 9px; // rendre la forme en rendre 
       .formLocation {
-
+        padding: 5px; // espace por tous les Cotes
         h3 {
-          text-align: center;
-          margin-bottom: 15px;
-          font-size:20px;
+          text-align: center; // cetrer le texte 
+          margin-bottom: 15px; // laisser espace en Bas 
+          font-size:20px;  // langeur de texte 
         }
       }
     }
@@ -84,6 +85,59 @@ const Home = () => {
                 ]}
                 >
                  <Select allowClear options={agences} />
+              </Form.Item>
+
+              <Form.Item 
+                label="Agence de restitution"
+                name="agenceRestitution"
+                rules={[
+                  {
+                    required:true,
+                    message: "Veuillez Choisir l'agence  de restitution!",
+                  }
+                ]}
+              > 
+                <Select allowClear options={agences} />
+              </Form.Item>
+
+              <Form.Item
+               label="Date de retrait"
+               name="dateRetrait"
+               rules={[
+                {
+                  required:true,
+                  message: "Veuillez Choisir la date de retrait!",
+                }
+               ]}
+               >
+                <DatePicker
+                  showTime={{
+                    format: 'HH:mm',
+                  }}
+                  style={{width:"100%"}}
+                  format="DD-MM-YYYY HH:mm"
+                />
+              </Form.Item>
+
+              <Form.Item
+               label="Date de retour"
+               name="dateRetour"
+               rules={[
+                {
+                  required:true,
+                  message:"Veuillez Choisir la date de retour!",
+                }
+               ]}
+              >
+                <DatePicker
+                  showTime={{
+                    format: "HH:mm",
+                  }}
+                  style={{ width: "100%" }}
+                  format="DD-MM-YYYY HH:mm"
+                />
+
+                
               </Form.Item>
 
             </Form>
