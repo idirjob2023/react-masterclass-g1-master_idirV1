@@ -136,8 +136,12 @@ const Home = () => {
                   style={{ width: "100%" }}
                   format="DD-MM-YYYY HH:mm"
                 />
+              </Form.Item>
 
-                
+              <Form.Item style={{ textAlign: "right" }}>
+                <Button type="primary" htmlType="submit">
+                  Valider
+                </Button>
               </Form.Item>
 
             </Form>
