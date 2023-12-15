@@ -3,8 +3,19 @@ import { styled } from "styled-components";
 import { Form, Select, Checkbox, Input, DatePicker, TimePicker,  Button, Flex, Row  } from 'antd';
 import { CalculatorOutlined } from "@ant-design/icons";
 import { Card ,  Col  } from 'antd';
+import Item from "antd/es/list/Item";
 
-const { Meta } = Card;
+// service
+import fabia from "../../assets/img/services/fabia-22.png";
+import skoda from "../../assets/img/services/skoda-octavia.png";
+import dacia from "../../assets/img/services/dacia-mcv.png";
+import hyundai from "../../assets/img/services/hyundai-i10-bva.png";
+// autres service
+import boiteAuto from "../../assets/img/autresServices/boite-auto.webp";
+import chauffeur from "../../assets/img/autresServices/chauffeur.webp";
+import gps from "../../assets/img/autresServices/gps.webp";
+
+
 
 const HeroSectionS = styled.section`
   background-image: url(https://ik.imagekit.io/z90usd6mcrv7/https://www.tunisia-rent-car.com/images/clio.webp);
@@ -53,6 +64,33 @@ const Home = () => {
     {
       value: "3",
       label: "Nabeul",
+    },
+  ];
+
+  const services = [
+    {
+      id: "1",
+      image: fabia,
+      price: "Prix à partir de 23 € jour",
+      details: "SKODA FABIA",
+    },
+    {
+      id: "2",
+      image: skoda,
+      price: "Prix à partir de 25 € jour",
+      details: "VOLKSWAGEN POLO",
+    },
+    {
+      id: "3",
+      image: dacia,
+      price: "Prix à partir de 27 € jour",
+      details: "VOLKSWAGEN POLO SEDAN",
+    },
+    {
+      id: "4",
+      image: hyundai,
+      price: "Prix à partir de 45 € jour",
+      details: "SKODA OCTAVIA",
     },
   ];
 
@@ -150,20 +188,22 @@ const Home = () => {
       </HeroSectionS>
       
       <ServiceSectionS>
-        <div style={{backgroundcolor:'#fff'}}> 
-          <p style={{Margin: '20px 0 10px 0',  FontWeight: '700', FontSize: '1.4rem', TextTransform: 'uppercase',textAlign: 'center'}}> <br/> PROMOTIONS </p>
-          <h2 style={{textAlign: 'center',  margin: '0 0 16px', fontWeight: '400', fontSize: '2.4rem', position: 'relative', 
-                      fontFamily: 'poppins', padding: '0 8px 20px',}}>Promotion location de voiture en Tunisie
-          </h2>
-         
-          <p style={{textAlign: 'center', fontSize:'14px'}}> 
-              Avec <strong>TUNISIA RENT CAR</strong>, effectuez une location voiture tunisie pas cher. Les meilleures promos de location auto tunisie.<br/>
-              Réservez votre voiture à l'aéroport en 3 clics.
-          </p>
-         
-         
+        <h1> PROMOTION </h1>
+        <h1> Promotion location de voiture en Tunisie </h1>
+        <Row gutter={[16, 16]} > 
+          {services.map((item) => (
+            <Col key={item.id} xs={24} xl={6} className="colService">
+              <Card hoverable cover={<img alt="example" src={item.image} />}>
+                <div className="price">{item.price}</div>
+                <div className="details">{item.details}</div>
+              </Card>
+            </Col>
+          )
+          
+          )}
 
-        </div>
+
+        </Row>
       
       </ServiceSectionS>
 
