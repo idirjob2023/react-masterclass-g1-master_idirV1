@@ -71,6 +71,32 @@ const HeroSectionS = styled.section`
       color:#ffffff;
       font-size:16px;
     }
+    .autresServices{
+      h3{
+        text-align: center;
+        font-size: 22;
+        margin: 23px; 
+      }
+      .rowService{
+        margin:0px;
+        .colService{
+          padding:0px;
+          .title{
+           font-size: 18px;
+           font-weight: 600;
+           margin: 0px 0px 0px 0px ;
+          }
+          .details{
+             background:#ffffff;
+             color:#000000;
+            font-size: 13px;
+          }
+        }
+      }
+
+
+        
+    }
 
 `;
 const Home = () => {
@@ -121,22 +147,19 @@ const Home = () => {
       id: "1",
       image: gps,
       title: "Location voiture avec GPS",
-      details:
-        "Afin de trouver votre chemin et de gagner du temps, louez un vrai GPS à 2 € / jour",
+      details:"Afin de trouver votre chemin et de gagner du temps, louez un vrai GPS à 2 € / jour",
     },
     {
       id: "2",
       image: chauffeur,
       title: "Location voiture avec CHAUFFEUR",
-      details:
-        "Pour faciliter vos deplacements en tunisie, faire des excursions sur mesure.",
+      details:"Pour faciliter vos deplacements en tunisie, faire des excursions sur mesure.",
     },
     {
       id: "3",
       image: boiteAuto,
       title: "Location voiture boite automatique",
-      details:
-        "un grand confort à bord, une motorisation silencieuse: Suzuki swift, Kia picanto, Hyundai i10",
+      details:"un grand confort à bord, une motorisation silencieuse: Suzuki swift, Kia picanto, Hyundai i10",
     },
   ];
   const onFinish = (values) => {
@@ -263,6 +286,57 @@ const Home = () => {
            )
            )}
           </Row>
+        </div>
+
+        <div className="conditions">
+          <h3>Conditions generales</h3>
+          <div className="conditionsText">
+            <p>
+              Tunisia Rent Car est une agence de location voiture Tunisie
+              agissant dans le domaine de location de véhicules depuis 2006.
+            </p>
+            <p>
+              Nous fournissons à nos clients un service simple, efficace et
+              rapide pour la location de voiture aux aéroports de la Tunisie
+              ainsi que toutes les villes touristiques de la Tunisie. Vous
+              pourriez nous retrouver facilement à l’aéroport de Tunis Carthage,
+              l’aéroport Enfidha, l’aéroport de Monastir et l’aéroport
+              International Djerba Midoun.
+            </p>
+            <p>
+              <h2>Profitez de votre voiture à Tunis</h2>, Hammamet ou Djerba
+              Tunisia Rent Car est votre partenaire de route, qui vous offre un
+              service de location voiture Tunisie loin de tous les tracas
+              imprévus qui peuvent survenir.
+            </p>
+            <p>
+              Pour tous vos déplacements en Tunisie, vous pouvez compter sur
+              nous, nous vous proposons la location de voitures courte ou longue
+              durée, avec ou sans chauffeur.
+            </p>
+            <p>
+              Notre but est de vous assister, lors de vos visites de découverte
+              du pays ou aussi pour vous aider lors de vos déplacements
+              professionnels.
+            </p>
+            <p>
+              <h2>Louez votre véhicule à un prix pas cher</h2> Tunisia Rent Car
+              fait évoluer ses services d’une façon permanente. Nous offrons à
+              nos clients des véhicules neufs, bien entretenues avec zéro défaut
+              pour que vous n’ayez pas de surprises lors de vos déplacements.
+            </p>
+            <p>
+              En fournissant les meilleurs services de manière transparente,
+              nous limitons l’effet des distances entre les villes, en vous
+              offrant une tranquillité d’esprit lors de vos déplacements.
+            </p>
+            <p>
+              Ce qui vous permettra de profiter de vos visites professionnelles
+              ou de vos vacances en famille en Tunisie. Nous proposons à nos
+              clients des prix intéressants et pas cher pour louer une voiture
+              tout en garantissant une meilleure qualité de services.
+            </p>
+          </div>
         </div>
       </ServiceSectionS>
 
