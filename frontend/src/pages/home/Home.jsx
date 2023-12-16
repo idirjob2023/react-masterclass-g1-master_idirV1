@@ -58,17 +58,18 @@ const HeroSectionS = styled.section`
       text-align: center;
       padding:20px 0px 0px 0px;
       font-size: 15px;
+     
     }
     .price{
       text-align: center;
-      
+      font-weight: 600;
     }
 
     .details{
       text-align: center;
       background:#262626;
       color:#ffffff;
-      font-size:15px;
+      font-size:16px;
     }
 
 `;
@@ -115,7 +116,29 @@ const Home = () => {
       details: "SKODA OCTAVIA",
     },
   ];
-
+  const autresServices = [
+    {
+      id: "1",
+      image: gps,
+      title: "Location voiture avec GPS",
+      details:
+        "Afin de trouver votre chemin et de gagner du temps, louez un vrai GPS à 2 € / jour",
+    },
+    {
+      id: "2",
+      image: chauffeur,
+      title: "Location voiture avec CHAUFFEUR",
+      details:
+        "Pour faciliter vos deplacements en tunisie, faire des excursions sur mesure.",
+    },
+    {
+      id: "3",
+      image: boiteAuto,
+      title: "Location voiture boite automatique",
+      details:
+        "un grand confort à bord, une motorisation silencieuse: Suzuki swift, Kia picanto, Hyundai i10",
+    },
+  ];
   const onFinish = (values) => {
     // call backend table location
     console.log(values);
@@ -223,10 +246,24 @@ const Home = () => {
           )
           
           )}
-
-
         </Row>
       
+        <div className="autresServices">
+          <h3>Agence de location voiture en Tunisie</h3>
+          <Row gutter={[16,16]} className="rowService">
+           
+            {autresServices.map((item) => (
+
+              <Col key={item} xs={24} xl={8} className="colService" >
+                <Card hoverable cover={<img alt="example" src={item.image} />}>
+                  <div className="title">{item.title}</div>
+                  <div className="details">{item.details}</div>
+                </Card>
+              </Col>           
+           )
+           )}
+          </Row>
+        </div>
       </ServiceSectionS>
 
     </div>
