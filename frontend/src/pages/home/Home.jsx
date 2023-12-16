@@ -47,10 +47,32 @@ const HeroSectionS = styled.section`
   `;
   
   const ServiceSectionS = styled.section`
-  background-color: white;
+    background-color: white;
+    padding: 15px;
+    h3{
+        text-align: center;
+        margin:20px 0px 30px 0px;
+        font-size: 22px;
+    }
+    h4{
+      text-align: center;
+      padding:20px 0px 0px 0px;
+      font-size: 15px;
+    }
+    .price{
+      text-align: center;
+      
+    }
+
+    .details{
+      text-align: center;
+      background:#262626;
+      color:#ffffff;
+      font-size:15px;
+    }
+
 `;
 const Home = () => {
-  
   
   const agences = [
     {
@@ -188,14 +210,14 @@ const Home = () => {
       </HeroSectionS>
       
       <ServiceSectionS>
-        <h1> PROMOTION </h1>
-        <h1> Promotion location de voiture en Tunisie </h1>
-        <Row gutter={[16, 16]} > 
+        <h4> PROMOTION </h4>
+        <h3> Promotion location de voiture en Tunisie </h3>
+        <Row gutter={[16, 16]} className="rowService" > 
           {services.map((item) => (
             <Col key={item.id} xs={24} xl={6} className="colService">
               <Card hoverable cover={<img alt="example" src={item.image} />}>
-                <div className="price">{item.price}</div>
                 <div className="details">{item.details}</div>
+                <div className="price">{item.price}</div>
               </Card>
             </Col>
           )
