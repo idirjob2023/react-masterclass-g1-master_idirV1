@@ -336,7 +336,7 @@ const Home = () => {
               clients des prix intéressants et pas cher pour louer une voiture
               tout en garantissant une meilleure qualité de services.
             </p>
-          </div>
+          </div> 
         </div>
       </ServiceSectionS>
 
