@@ -4,4 +4,4 @@ const { getAutos } = require("../controllers/autoController");
 
 router.get("/", getAutos);
 
-module.exports = router; 
+module.exports = router;

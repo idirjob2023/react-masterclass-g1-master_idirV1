@@ -1,87 +1,37 @@
 const asyncHandler = require("express-async-handler");
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
-const tokenKey = process.env.TOKEN_KEY;
-const user = require("../models/userModel");
-const role = require("../models/roleModel");
-const token = require("../models/tokenModel");
+const auto = require("../models/autoModel");
 
-// generate jwt token
-const generateToken = (id, role) => {
-  return jwt.sign({ id, role }, tokenKey, { expiresIn: "10d" });
-};
-
-// @[  POST,  /api/auth/register, public,  register new user ]
-const register = asyncHandler(async (req, res) => {
-  const newRole = await role.findOne({ name: "admin" });
-
-  // hash password
-  const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash("12345678", salt);
-
-  const newUser = await user.create({
-    name: "ch",
-    email: "ch@gmail.com",
-    password: hashedPassword,
-    role: newRole,
-  });
-
-  // creation du nouveau token dans la table token
-  const newToken = await token.create({
-    key: generateToken(newUser.id, newUser.role),
-  });
-
-  // affectation du token creé
-  newUser.token = newToken;
-  newUser.save();
-
-  console.log(newUser);
-
+// @[  GET,  /api/autos/, private,  return all autos ]
+const getAutos = asyncHandler(async (req, res) => {
+  const autos = await auto.find();
+  console.log(autos);
   res.status(200).json({
-    role: newRole,
-    token: newToken,
-    user: newUser,
-    message: "user created ",
+    autos,
+    message: "getAutos method from autoController",
   });
 });
 
-// @[  POST,  /api/auth/login, public,  sign in user ]
-const login = asyncHandler(async (req, res) => {
-  const loggedUser = await user.findOne({ email: "ch@gmail.com" });
-  // update token
-  const newToken = await token.create({
-    key: generateToken(loggedUser.id, loggedUser.role),
+// @[ POST,  /api/autos/create,  private,  create new vehicule  ]
+const createAuto = asyncHandler(async (req, res) => {
+  const newAuto = await auto.create({
+    brand: "skoda",
+    model: "fabia",
+    year: 2014,
+    color: "rouge",
+    energy: "diesel",
+    horsepower: "6",
+    photo: [
+      "https://images.pexels.com/photos/15194851/pexels-photo-15194851/free-photo-of-skoda-near-water-and-hills.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    ],
   });
-
-  loggedUser.token = newToken;
-  loggedUser.save();
-
+  console.log(newAuto);
   res.status(200).json({
-    loggedUser,
-    message: "login method from authController",
-  });
-});
-
-// @[  get,  /api/auth/logout, private,  sign out user ]
-const logout = asyncHandler(async (req, res) => {
-  const loggedUser = await user.findOne({ email: "ch@gmail.com" });
-  // delete token
-  const loggedUserToken = await token.findById(loggedUser.token);
-  const deleted = await loggedUserToken.deleteOne();
-
-  loggedUser.token = null;
-  loggedUser.save();
-
-  res.status(200).json({
-    deleted,
-    loggedUserToken,
-    loggedUser,
-    message: "logout method from authController",
+    auto: newAuto,
+    message: "getAutos method from autoController",
   });
 });
 
 module.exports = {
-  register,
-  login,
-  logout,
+  getAutos,
+  createAuto,
 };
