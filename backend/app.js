@@ -11,10 +11,7 @@ connectDB();
 
 const app = express() ;
 
-app.get("/api/users", (req, res) =>{
-    res.status(200).json({
-        message:"Hello Rec api",
-    });
-});
+app.use("/api/users",require('./routes/authRoutes'));
+app.use("/api/products",require('./routes/productRoutes'));
 
 app.listen(port, () => console.log(`Serveur started on port ${port}`)) ;

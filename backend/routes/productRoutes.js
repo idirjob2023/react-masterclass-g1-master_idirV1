@@ -25,4 +25,4 @@ router.delete('/:id', (reg, res) => {
     });
 });
 
-module.exports=router ;
+module.exports = router ;
