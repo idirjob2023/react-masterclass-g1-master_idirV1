@@ -11,17 +11,23 @@ const userSchema=mongoose.Schema(
         type:String,
         required:[true, "veuillez inserer votre Email"],
         unique:true,
+        lowercase: true,
     },
 
     password:{
         type:String,
         required:[true, "veuillez inserer votre Password"],
+        select: false,
     },
 
     role:{
-        type:String,
-        default:"member",
+        type: mongoose.Types.ObjectId,
+        ref: "Role",
     }, 
+    token: {
+        type: mongoose.Types.ObjectId,
+        ref:"Token",
+    }
     },
     {
         timestamps:true,
