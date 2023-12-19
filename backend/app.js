@@ -11,7 +11,12 @@ connectDB();
 
 const app = express() ;
 
-app.use("/api/users",require('./routes/authRoutes'));
+app.use("/api/auth",require('./routes/authRoutes'));
+app.use("/api/users",require('./routes/userRoutes'));
+app.use("/api/autos",require('./routes/autosRoutes'));
+app.use("/api/tokens",require('./routes/tokenRoutes'));
+app.use("/api/roles",require('./routes/roleRoutes'));
+
 app.use("/api/products",require('./routes/productRoutes'));
 
 app.listen(port, () => console.log(`Serveur started on port ${port}`)) ;
