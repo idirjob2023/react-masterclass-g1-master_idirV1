@@ -65,19 +65,20 @@ const login = asyncHandler(async (req, res) => {
 // @[  get,  /api/auth/logout, private,  sign out user ]
 const logout = asyncHandler(async (req, res) => {
   const loggedUser = await user.findOne({ email: "ch@gmail.com" });
-  // delete token
-  const loggedUserToken = await token.findById(loggedUser.token);
-  const deleted = await loggedUserToken.deleteOne();
+  
+   delete token
+   const loggedUserToken = await token.findById(loggedUser.token);
+   const deleted = await loggedUserToken.deleteOne();
 
-  loggedUser.token = null;
-  loggedUser.save();
+   loggedUser.token = null;
+   loggedUser.save();
 
-  res.status(200).json({
-    deleted,
-    loggedUserToken,
-    loggedUser,
-    message: "logout method from authController",
-  });
+   res.status(200).json({
+     deleted,
+     loggedUserToken,
+     loggedUser,
+     message: "logout method from authController",
+    });
 });
 
 module.exports = {
