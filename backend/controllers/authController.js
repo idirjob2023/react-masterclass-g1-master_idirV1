@@ -2,9 +2,10 @@ const asyncHandler = require("express-async-handler");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const tokenKey = process.env.TOKEN_KEY;
-const user = require("../models/userModel");
-const role = require("../models/roleModel");
-const token = require("../models/tokenModel");
+
+const User = require("../models/userModel");
+const Role = require("../models/roleModel");
+const Token = require("../models/tokenModel");
 
 // generate jwt token
 const generateToken = (id, role) => {
@@ -47,19 +48,16 @@ const register = asyncHandler(async (req, res) => {
 
 // @[  POST,  /api/auth/login, public,  sign in user ]
 const login = asyncHandler(async (req, res) => {
-  const loggedUser = await user.findOne({ email: "ch@gmail.com" });
-  // update token
-  const newToken = await token.create({
-    key: generateToken(loggedUser.id, loggedUser.role),
-  });
+  const {email, password} = req.body;
 
-  loggedUser.token = newToken;
-  loggedUser.save();
-
-  res.status(200).json({
-    loggedUser,
-    message: "login method from authController",
-  });
+  const userExist = await User.findOne({ email });
+  console.log('hello iam herer');
+  if(userExist &&  await bcrypt.compare(password, userExist.password)){
+     res.status(200).json({userExist, email, password, message: "users connected succee"});
+   }else{
+    res.status(400).json({ message: "identifiant invalid"});
+   }
+    
 });
 
 // @[  get,  /api/auth/logout, private,  sign out user ]
@@ -86,3 +84,18 @@ module.exports = {
   login,
   logout,
 };
+
+
+//const loggedUser = await user.findOne({ email: "ch@gmail.com" });
+// update token
+//const newToken = await token.create({
+//  key: generateToken(loggedUser.id, loggedUser.role),
+//});
+
+//loggedUser.token = newToken;
+//loggedUser.save();
+
+//res.status(200).json({
+//  loggedUser,
+//  message: "login method from authController",
+//});

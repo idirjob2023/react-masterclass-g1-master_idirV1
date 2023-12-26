@@ -25,6 +25,20 @@ const autoSchema = mongoose.Schema(
       type: Number,
       required: [true, "Veuillez inserer le champ horsepower"],
     },
+    transmission: {
+      type: String,
+      required: [true, "Veuillez inserer le champ transmission"],
+    },
+
+    siege: {
+      type: Number,
+      required: [true, "Veuillez inserer le champ siege"],
+    },
+    cartegorie: {
+      type: String,
+      required: [true, "Veuillez inserer le champ cartegorie"],
+    },
+    
     photo: [
       {
         type: String,
