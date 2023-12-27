@@ -4,6 +4,7 @@ import { Form, Select, Checkbox, Input, DatePicker, TimePicker,  Button, Flex, R
 import { CalculatorOutlined } from "@ant-design/icons";
 import { Card ,  Col  } from 'antd';
 import Item from "antd/es/list/Item";
+import { motion } from "framer-motion";
 
 // service
 import fabia from "../../assets/img/services/fabia-22.png";
@@ -47,58 +48,56 @@ const HeroSectionS = styled.section`
   `;
   
   const ServiceSectionS = styled.section`
-    background-color: white;
-    padding: 15px;
-    h3{
-        text-align: center;
-        margin:20px 0px 30px 0px;
-        font-size: 22px;
-    }
-    h4{
+  background-color: white;
+  padding: 15px;
+  h3 {
+    text-align: center;
+    font-size: 22px;
+    margin: 43px 0;
+  }
+  .price {
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .details {
+    font-size: 16px;
+  }
+  .autresServices {
+    h3 {
       text-align: center;
-      padding:20px 0px 0px 0px;
-      font-size: 15px;
-     
+      font-size: 22px;
+      margin: 43px 0;
     }
-    .price{
-      text-align: center;
+    .title {
+      font-size: 22px;
       font-weight: 600;
     }
-
-    .details{
+    .details {
+      font-size: 17px;
+    }
+  }
+  .conditions {
+    h3 {
       text-align: center;
-      background:#262626;
-      color:#ffffff;
-      font-size:16px;
+      font-size: 22px;
+      margin: 43px 0;
     }
-    .autresServices{
-      h3{
-        text-align: center;
-        font-size: 22;
-        margin: 23px; 
+    line-height: 1.82;
+    padding: 1px 5px;
+    margin-bottom: 15px;
+    .conditionsText {
+      p {
+        margin-bottom: 10px;
       }
-      .rowService{
-        margin:0px;
-        .colService{
-          padding:0px;
-          .title{
-           font-size: 18px;
-           font-weight: 600;
-           margin: 0px 0px 0px 0px ;
-          }
-          .details{
-             background:#ffffff;
-             color:#000000;
-            font-size: 13px;
-          }
-        }
+      h2 {
+        font-weight: 700;
+        font-size: 21px;
       }
-
-
-        
+      font-size: 16px;
     }
-
+  }
 `;
+
 const Home = () => {
   
   const agences = [
@@ -168,14 +167,14 @@ const Home = () => {
   };
   
   return (
-    <div> 
-      
-      <section style={{background:'#444', margin:'4px 0px 0px 0px'}}>
-        <h1> entete </h1>
-      </section>
-
+    <div>   
       <HeroSectionS>
-          <div className="formDiv">
+          <motion.div 
+          className="formDiv"
+          initial={{ y: -610 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 1 }}>
+            
             <Form  name="locationForm" layout="vertical" className="formLocation"  autoComplete="off" onFinish={onFinish} > 
               
               <h3>Formulaire de location</h3>
@@ -251,40 +250,35 @@ const Home = () => {
               </Form.Item>
 
             </Form>
-          </div>
+          </motion.div>
           
       </HeroSectionS>
       
       <ServiceSectionS>
-        <h4> PROMOTION </h4>
-        <h3> Promotion location de voiture en Tunisie </h3>
-        <Row gutter={[16, 16]} className="rowService" > 
+        <h3>Promotion location de voiture en Tunisie</h3>
+        
+        <Row gutter={[16, 16]} className="rowService">
           {services.map((item) => (
             <Col key={item.id} xs={24} xl={6} className="colService">
               <Card hoverable cover={<img alt="example" src={item.image} />}>
-                <div className="details">{item.details}</div>
                 <div className="price">{item.price}</div>
+                <div className="details">{item.details}</div>
               </Card>
             </Col>
-          )
-          
-          )}
+          ))}
         </Row>
       
         <div className="autresServices">
           <h3>Agence de location voiture en Tunisie</h3>
-          <Row gutter={[16,16]} className="rowService">
-           
+          <Row gutter={[16, 16]} className="rowService">
             {autresServices.map((item) => (
-
-              <Col key={item} xs={24} xl={8} className="colService" >
+              <Col key={item.id} xs={24} xl={8} className="colService">
                 <Card hoverable cover={<img alt="example" src={item.image} />}>
                   <div className="title">{item.title}</div>
                   <div className="details">{item.details}</div>
                 </Card>
-              </Col>           
-           )
-           )}
+              </Col>
+            ))}
           </Row>
         </div>
 
@@ -304,7 +298,7 @@ const Home = () => {
               International Djerba Midoun.
             </p>
             <p>
-              <h2>Profitez de votre voiture à Tunis</h2>, Hammamet ou Djerba
+              Profitez de votre voiture à Tunis , Hammamet ou Djerba
               Tunisia Rent Car est votre partenaire de route, qui vous offre un
               service de location voiture Tunisie loin de tous les tracas
               imprévus qui peuvent survenir.
@@ -320,7 +314,7 @@ const Home = () => {
               professionnels.
             </p>
             <p>
-              <h2>Louez votre véhicule à un prix pas cher</h2> Tunisia Rent Car
+              Louez votre véhicule à un prix pas cher Tunisia Rent Car
               fait évoluer ses services d’une façon permanente. Nous offrons à
               nos clients des véhicules neufs, bien entretenues avec zéro défaut
               pour que vous n’ayez pas de surprises lors de vos déplacements.

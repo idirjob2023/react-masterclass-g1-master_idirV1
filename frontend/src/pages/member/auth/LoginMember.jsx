@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Checkbox, Form, Input } from "antd";
-import { login } from "../../../features/auth/authSlice";
+import { login, setUserConnected } from "../../../features/auth/authSlice";
 import { useDispatch } from "react-redux";
-
+import { useNavigate } from "react-router-dom";
 
 
 const LoginPageStyle = {
@@ -24,17 +24,30 @@ const formStyle = {
 
 const LoginMember = () => {
   const dispatch = useDispatch();
+  const navegate = useNavigate();
   
-  const handleLogin = (values) => {
-    dispatch(login(values)).then(res=>{
-    const {id:_id, name, email, token } = res.payload.user;
-    const {message } = res.payload;
-    console.log(message);
-    console.log(token);
-    localStorage.setItem("token" , token);
-    localStorage.setItem("user", JSON.stringify(res.payload.user));
+  const [loading, setLoading] = useState(false); 
 
-   }).catch(err=>console.log(err));
+  const handleLogin = (values) => {
+    
+    setLoading(true);
+
+    dispatch(login(values)).then(res=>{
+      const {id:_id, name, email, token } = res.payload.user;
+      const {message } = res.payload;
+      console.log(message);
+      console.log(token);
+      localStorage.setItem("token" , token);
+      localStorage.setItem("user", JSON.stringify(res.payload.user));
+      setLoading(false);
+      dispatch(setUserConnected(res.payload.user));
+    
+      navegate("/dashboard-member")
+
+    }).catch((
+      err)=> { console.log(err);
+      setLoading(false);
+    });
   };
 
   const onFinish = (values) => {
@@ -79,7 +92,13 @@ const LoginMember = () => {
       </Form.Item>
 
       <Form.Item style={{ textAlign: "right" }}>
-        <Button size={"small"} type="primary" htmlType="submit">
+        <Button 
+           size={"small"} 
+           type="primary" 
+           htmlType="submit"
+          
+           loading={loading}
+           >
           Se connecter
         </Button>
       </Form.Item>
