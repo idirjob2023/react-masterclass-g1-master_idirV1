@@ -14,12 +14,17 @@ import Statistiques from "./pages/admin/statistiques/Statistiques";
 
 // zone member prive
 import LoginMember from "./pages/member/auth/LoginMember"; // public
+import RegisterMember from "./pages/member/auth/RegisterMember"; // public
 import ProfileMember from "./pages/member/profile/Profile";
 
 // zone accueil home public
-import Home from "./pages/home/Home";
+import Home from "./pages/public/Home";
+import Prestations from "./pages/public/Prestations";
+import Services from "./pages/public/Services";
+import Apropos from "./pages/public/Apropos";
 
- 
+// espace client
+import ContactUs from "./pages/public/ContactUs";
 
 function App() {
   return (

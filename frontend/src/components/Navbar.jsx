@@ -24,13 +24,7 @@ const Navbar = () => {
     <NavbarS>
       
       <Flex gap="small" wrap="wrap">
-        <Button >ACCUEIL</Button>
-        <Button >TARIFS</Button>
-        <Button >VOITURES</Button>
-        <Button >AGENCES</Button>
-        <Button style={{background:'red'}}>PROMOTIONS</Button>
-        <Button >POINTS FORTS</Button>
-        <Button >TAXI TUNISIE</Button>
+        
       </Flex>
 
         

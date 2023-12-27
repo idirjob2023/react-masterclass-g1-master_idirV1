@@ -49,13 +49,19 @@ const register = asyncHandler(async (req, res) => {
 // @[  POST,  /api/auth/login, public,  sign in user ]
 const login = asyncHandler(async (req, res) => {
   const {email, password} = req.body;
+  const user = await User.findOne({ email });
 
-  const userExist = await User.findOne({ email });
   console.log('hello iam herer');
-  if(userExist &&  await bcrypt.compare(password, userExist.password)){
-     res.status(200).json({userExist, email, password, message: "users connected succee"});
+  if(user &&  await bcrypt.compare(password, user.password)){
+     res.status(200).json({ user:{
+                                    id:user._id,
+                                    name:user.name,
+                                    email:user.email,
+                                  //  password:user.password,
+                           token:generateToken(user._id),
+                          },  message: "users connected succee"});
    }else{
-    res.status(400).json({ message: "identifiant invalid"});
+    res.status(400).json({ email, password,message: "identifiant invalid"});
    }
     
 });

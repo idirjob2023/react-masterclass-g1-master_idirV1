@@ -1,12 +1,9 @@
 import React from "react";
 import { Button, Checkbox, Form, Input } from "antd";
+import { login } from "../../../features/auth/authSlice";
+import { useDispatch } from "react-redux";
 
-const onFinish = (values) => {
-  console.log("Success:", values);
-};
-const onFinishFailed = (errorInfo) => {
-  console.log("Failed:", errorInfo);
-};
+
 
 const LoginPageStyle = {
   backgroundColor: "white",
@@ -25,14 +22,34 @@ const formStyle = {
   padding: "10px",
 };
 
-const Login = () => (
-  <div style={LoginPageStyle}>
+const LoginMember = () => {
+  const dispatch = useDispatch();
+  
+  const handleLogin = (values) => {
+    dispatch(login(values)).then(res=>{
+    const {id:_id, name, email, token } = res.payload.user;
+    const {message } = res.payload;
+    console.log(message);
+    console.log(token);
+    localStorage.setItem("token" , token);
+    localStorage.setItem("user", JSON.stringify(res.payload.user));
+
+   }).catch(err=>console.log(err));
+  };
+
+  const onFinish = (values) => {
+     console.log("Success:", values);
+     handleLogin(values);
+  };
+ 
+  return(
+    <div style={LoginPageStyle}>
     <Form
       name="basic"
       layout="vertical"
       style={formStyle}
       onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
+      // onFinishFailed={onFinishFailed}
       autoComplete="off"
     >
       <Form.Item
@@ -66,7 +83,9 @@ const Login = () => (
           Se connecter
         </Button>
       </Form.Item>
+
     </Form>
-  </div>
-);
-export default Login;
+    </div>
+  );
+};
+export default LoginMember;
