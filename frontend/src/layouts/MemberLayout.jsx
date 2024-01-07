@@ -79,6 +79,7 @@ const MemberLayout = () => {
           style={{
             padding: 0,
             background: colorBgContainer,
+            backgroundColor:"green",
           }}
         >
           <Button
@@ -91,6 +92,8 @@ const MemberLayout = () => {
               height: 64,
             }}
           />
+
+          <Button style={{ display:"flex", justifyContent:"space-betwen" }}  > Deconnextion </Button>
         </Header>
 
         <Content
@@ -102,8 +105,11 @@ const MemberLayout = () => {
           }}
         >
           <Outlet />
+
         </Content>
+        
       </Layout>
+
     </Layout>
   );
 };

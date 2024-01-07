@@ -10,7 +10,6 @@ const port = process.env.PORT || 5000;
 connectDB();
 
 const app = express() ;
-app.use(compression()) ;
 app.use(express.json()) ;
 app.use(express.urlencoded({extended:false})) ;
 app.use(cors()) ;
@@ -22,5 +21,5 @@ app.use("/api/tokens",require('./routes/tokenRoutes'));
 app.use("/api/roles",require('./routes/roleRoutes'));
 
 app.use("/api/products",require('./routes/productRoutes'));
-
+app.use(compression()) ;
 app.listen(port, () => console.log(`Serveur started on port ${port}`)) ;

@@ -19,6 +19,17 @@ export const login = createAsyncThunk("Auth/login", async (data, thunkAPI) => {
     console.log(error);
   }
 });
+
+export const register1 = createAsyncThunk("Auth/register", async (data, thunkAPI) => {
+  try {
+    let url = `/auth/register`;
+    const res = await http.post(url, data);
+    console.log("running");
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+});
 export const register = createAsyncThunk(
   "Auth/Register",
   async (data, thunkAPI) => {
@@ -32,6 +43,7 @@ export const register = createAsyncThunk(
   }
 );
 
+
 export const logout = createAsyncThunk(
   "Auth/Logout",
   async (data, thunkAPI) => {
@@ -44,6 +56,20 @@ export const logout = createAsyncThunk(
     }
   }
 );
+
+
+// export const logout = createAsyncThunk(
+//   "Auth/Logout",
+//   async (data, thunkAPI) => {
+//     try {
+//       let url = `/auth/logout`;
+//       const res = await http.post(url, data);
+//       return res.data;
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   }
+// );
 
 const authSlice = createSlice({
   name: "Auth",
@@ -60,7 +86,7 @@ const authSlice = createSlice({
       state.user = "";
     },
   },
-});
+}); 
 
 export const { setUserConnected, setUserDisconnected } = authSlice.actions;
 export default authSlice.reducer;

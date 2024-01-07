@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Button, Checkbox, Form, Input } from "antd";
+import { Button, Form, Input, Flex } from "antd";
 import { login, setUserConnected } from "../../../features/auth/authSlice";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { LockOutlined } from "@ant-design/icons";
 
 
 const LoginPageStyle = {
@@ -51,20 +52,33 @@ const LoginMember = () => {
   };
 
   const onFinish = (values) => {
-     console.log("Success:", values);
+    console.log("Success:", values.email);
      handleLogin(values);
   };
  
   return(
+    
     <div style={LoginPageStyle}>
     <Form
       name="basic"
       layout="vertical"
       style={formStyle}
       onFinish={onFinish}
-      // onFinishFailed={onFinishFailed}
+     // onFinishFailed={onFinishFailed}
       autoComplete="off"
     >
+      <div>
+        <Link to="/">
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <LockOutlined style={{ fontSize: "20px", color: "#333" }} />
+          </div>
+        </Link>
+
+        <div style={{padding:"10px"}}>
+           <h3 style={{ textAlign: "center" }} > <span style={{color:"red"}}>C</span>onnexion Membre</h3>
+        </div>
+      </div>
+
       <Form.Item
         label="Email"
         name="email"
@@ -91,7 +105,15 @@ const LoginMember = () => {
         <Input.Password />
       </Form.Item>
 
-      <Form.Item style={{ textAlign: "right" }}>
+      <Form.Item style={{ textAlign: "right"}}>
+       
+      <Flex justify="space-between" align="center" >
+        
+        <div> <Link to="/register-member" style={{ fontSize: "11px" }} > 
+                 Lien pour s'inscrire
+              </Link> 
+        </div>
+
         <Button 
            size={"small"} 
            type="primary" 
@@ -99,9 +121,13 @@ const LoginMember = () => {
           
            loading={loading}
            >
-          Se connecter
+             Se connecter
         </Button>
+        
+      </Flex>
       </Form.Item>
+
+     
 
     </Form>
     </div>

@@ -35,6 +35,7 @@ function App() {
         </Route>
 
         <Route path="/login-member" element={<LoginMember />} />
+        <Route path="/Register-member" element={<RegisterMember />} />
         <Route path="/login-admin" element={<LoginAdmin />} />
 
         <Route path="/dashboard-member" element={<MemberLayout />}>

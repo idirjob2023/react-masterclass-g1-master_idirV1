@@ -14,36 +14,28 @@ const generateToken = (id, role) => {
 
 // @[  POST,  /api/auth/register, public,  register new user ]
 const register = asyncHandler(async (req, res) => {
-  const newRole = await role.findOne({ name: "admin" });
-
-  // hash password
+  const { name, email, password } = req.body;
+  // Cripter le mot de passe 
   const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash("12345678", salt);
-
-  const newUser = await user.create({
-    name: "ch",
-    email: "ch@gmail.com",
+  const hashedPassword = await bcrypt.hash(password, salt);
+  
+  const user = await User.create({
+    name,
+    email,
     password: hashedPassword,
-    role: newRole,
   });
 
-  // creation du nouveau token dans la table token
-  const newToken = await token.create({
-    key: generateToken(newUser.id, newUser.role),
+  
+  res.json({
+    user: {
+      id: user._id,
+      name: user.name,
+      email: user.email,
+      token: generateToken(user._id),
+    },
   });
+ 
 
-  // affectation du token creé
-  newUser.token = newToken;
-  newUser.save();
-
-  console.log(newUser);
-
-  res.status(200).json({
-    role: newRole,
-    token: newToken,
-    user: newUser,
-    message: "user created ",
-  });
 });
 
 // @[  POST,  /api/auth/login, public,  sign in user ]
@@ -57,32 +49,34 @@ const login = asyncHandler(async (req, res) => {
                                     id:user._id,
                                     name:user.name,
                                     email:user.email,
-                                  //  password:user.password,
                            token:generateToken(user._id),
                           },  message: "users connected succee"});
    }else{
-    res.status(400).json({ email, password,message: "identifiant invalid"});
+    res.status(400).json({ email,message: "identifiant invalid"});
    }
     
 });
 
 // @[  get,  /api/auth/logout, private,  sign out user ]
 const logout = asyncHandler(async (req, res) => {
-  const loggedUser = await user.findOne({ email: "ch@gmail.com" });
+  const {email, password} = req.body;
+  res.json({email, password});
   
-   delete token
-   const loggedUserToken = await token.findById(loggedUser.token);
-   const deleted = await loggedUserToken.deleteOne();
+  // const loggedUser = await user.findOne({ email: "ch@gmail.com" });
+  
+  //  delete token
+  //  const loggedUserToken = await token.findById(loggedUser.token);
+  //  const deleted = await loggedUserToken.deleteOne();
 
-   loggedUser.token = null;
-   loggedUser.save();
+  //  loggedUser.token = null;
+  //  loggedUser.save();
 
-   res.status(200).json({
-     deleted,
-     loggedUserToken,
-     loggedUser,
-     message: "logout method from authController",
-    });
+  //  res.status(200).json({
+  //    deleted,
+  //    loggedUserToken,
+  //    loggedUser,
+  //    message: "logout method from authController",
+  //   });
 });
 
 module.exports = {

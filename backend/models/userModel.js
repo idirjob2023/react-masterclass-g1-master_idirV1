@@ -19,6 +19,10 @@ const userSchema=mongoose.Schema(
         required:[true, "veuillez inserer votre Password"],
         // select: false, 
     },
+    photo:{
+        type:String,
+       
+    },
 
     role:{
         type: mongoose.Types.ObjectId,
