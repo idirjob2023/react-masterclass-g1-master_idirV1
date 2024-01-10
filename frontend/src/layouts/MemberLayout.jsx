@@ -9,15 +9,23 @@ import {
   BarcodeOutlined,
   BarChartOutlined,
   SettingOutlined,
+  LoginOutlined,
 } from "@ant-design/icons";
 
 import { Layout, Menu, Button, theme, Tooltip } from "antd";
 
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet , useNavigate} from "react-router-dom";
+
+import { logout, setUserDisconnected } from "../features/auth/authSlice";
+
+import { useDispatch } from "react-redux";
 
 const { Header, Sider, Content } = Layout;
 
 const MemberLayout = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  
   const [collapsed, setCollapsed] = useState(false);
 
   const {
@@ -41,6 +49,23 @@ const MemberLayout = () => {
       label: "Manage users",
     },
   ];
+
+  const handleLogout = () => {
+    const email = "ch@gmail.com";
+    
+    dispatch(logout(email))
+      .then((res) => {
+        const { msg } = res.payload;
+        console.log(msg);
+        //localStorage.removeItem("token");
+        //localStorage.removeItem("user");
+        //dispatch(setUserDisconnected());
+        //navigate("/login-member");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <Layout style={{ height: "100vh", padding: "0 0px" }}>
@@ -79,9 +104,10 @@ const MemberLayout = () => {
           style={{
             padding: 0,
             background: colorBgContainer,
-            backgroundColor:"green",
+            backgroundColor:"white",
           }}
         >
+         <div style={{display:"flex", justifyContent:"space-between", alignItems:"center" }}>
           <Button
             type="text"
             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -92,8 +118,19 @@ const MemberLayout = () => {
               height: 64,
             }}
           />
-
-          <Button style={{ display:"flex", justifyContent:"space-betwen" }}  > Deconnextion </Button>
+              <div>
+                <span style={{marginRight:"10px"}}>Bonjour Flen</span>
+                <LoginOutlined 
+                 style={{
+                    fontSize: "16px",
+                    width: 64,
+                    height: 64,
+                  }}
+                 onClick={() => handleLogout()}
+                />
+              </div>
+              
+          </div>
         </Header>
 
         <Content

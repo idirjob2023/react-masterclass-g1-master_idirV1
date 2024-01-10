@@ -76,7 +76,7 @@ const RegisterMember = () => {
         </Link>
 
         <div style={{padding:"10px"}}>
-           <h3 style={{ textAlign: "center" }} > <span style={{color:"red"}}>I</span>nsription Membre</h3>
+           <h3 style={{ textAlign: "center" }} > <span style={{color:"red"}}>I</span>Insription Membre</h3>
         </div>
       </div>
 
