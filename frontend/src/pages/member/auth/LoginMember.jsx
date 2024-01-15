@@ -53,7 +53,7 @@ const LoginMember = () => {
 
   const onFinish = (values) => {
     console.log("Success:", values.email);
-     handleLogin(values);
+      handleLogin(values);
   };
  
   return(
@@ -104,7 +104,7 @@ const LoginMember = () => {
       >
         <Input.Password />
       </Form.Item>
-
+      
       <Form.Item style={{ textAlign: "right"}}>
        
       <Flex justify="space-between" align="center" >
@@ -126,8 +126,6 @@ const LoginMember = () => {
         
       </Flex>
       </Form.Item>
-
-     
 
     </Form>
     </div>

@@ -51,16 +51,19 @@ const MemberLayout = () => {
   ];
 
   const handleLogout = () => {
+    
     const email = "ch@gmail.com";
     
     dispatch(logout(email))
       .then((res) => {
         const { msg } = res.payload;
-        console.log(msg);
-        //localStorage.removeItem("token");
-        //localStorage.removeItem("user");
-        //dispatch(setUserDisconnected());
-        //navigate("/login-member");
+        //console.log(msg);
+        //console.log("email");
+        console.log(res);
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        dispatch(setUserDisconnected());
+        navigate("/login-member");
       })
       .catch((err) => {
         console.log(err);
@@ -85,10 +88,10 @@ const MemberLayout = () => {
             gap: "15px",
           }}
         >
-          <Tooltip placement="rightBottom" title={"Administration"}>
+          <Tooltip placement="rightBottom" title={" Espace Member"}>
             <SettingOutlined />
           </Tooltip>
-          {collapsed ? "" : <span>Administration</span>}
+          {collapsed ? "" : <span> Espace Membre </span>}
         </div>
 
         <Menu

@@ -66,7 +66,9 @@ const Navbar = () => {
   const [loading, setLoading] = useState(false);
 
   const handleLogout = () => {
+   
     const email = "karim@rent-car.net";
+   
     dispatch(logout(email))
       .then((res) => {
         console.log(res);

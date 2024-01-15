@@ -33,7 +33,6 @@ const RegisterMember = () => {
   const handleRegister = (values) => {
     
     setLoading(true);
-
     dispatch(register(values)).then(res=>{
       const {id:_id, name, email, token } = res.payload.user;
       const {message } = res.payload;
@@ -92,6 +91,7 @@ const RegisterMember = () => {
       >
         <Input />
       </Form.Item>
+     
       <Form.Item
         label="Email"
         name="email"

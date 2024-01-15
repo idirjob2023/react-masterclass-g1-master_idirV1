@@ -58,10 +58,11 @@ const login = asyncHandler(async (req, res) => {
 });
 
 // @[  get,  /api/auth/logout, private,  sign out user ]
+
 const logout = asyncHandler(async (req, res) => {
-  const {email, password} = req.body;
-  res.json({email, password});
-  
+  const { email } = req.body;
+  res.json({ email, msg: "logout with success" });
+  console.log({email}) ; 
   // const loggedUser = await user.findOne({ email: "ch@gmail.com" });
   
   //  delete token
