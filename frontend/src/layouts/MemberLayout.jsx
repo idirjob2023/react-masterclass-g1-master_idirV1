@@ -27,7 +27,10 @@ const MemberLayout = () => {
   const navigate = useNavigate();
   
   const [collapsed, setCollapsed] = useState(false);
-
+  const [ConnectedUser, setConnectedUser] = useState(
+         localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")): " "
+         );
+  
   const {
     token: { colorBgContainer },
   } = theme.useToken();
@@ -122,7 +125,7 @@ const MemberLayout = () => {
             }}
           />
               <div>
-                <span style={{marginRight:"10px"}}>Bonjour Flen</span>
+                <span style={{marginRight:"10px"}}> Bonjour, {ConnectedUser ? ConnectedUser.name : " "} </span>
                 <LoginOutlined 
                  style={{
                     fontSize: "16px",
@@ -130,6 +133,7 @@ const MemberLayout = () => {
                     height: 64,
                   }}
                  onClick={() => handleLogout()}
+                 
                 />
               </div>
               

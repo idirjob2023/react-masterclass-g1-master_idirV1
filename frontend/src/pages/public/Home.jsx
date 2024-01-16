@@ -1,9 +1,15 @@
-import { React,useState } from "react";
+import React, { useState } from "react";
 import { styled } from "styled-components";
-import { Form, Select, Checkbox, Input, DatePicker, TimePicker,  Button, Flex, Row  } from 'antd';
-import { CalculatorOutlined } from "@ant-design/icons";
-import { Card ,  Col  } from 'antd';
-import Item from "antd/es/list/Item";
+import {
+  Button,
+  Select,
+  Form,
+  Row,
+  Col,
+  DatePicker,
+  Card,
+  Checkbox,
+} from "antd";
 import { motion } from "framer-motion";
 
 // service
@@ -16,38 +22,39 @@ import boiteAuto from "../../assets/img/autresServices/boite-auto.webp";
 import chauffeur from "../../assets/img/autresServices/chauffeur.webp";
 import gps from "../../assets/img/autresServices/gps.webp";
 
-
-
 const HeroSectionS = styled.section`
   background-image: url(https://ik.imagekit.io/z90usd6mcrv7/https://www.tunisia-rent-car.com/images/clio.webp);
-  background-size: cover; // 
-  background-repeat: no-repeat; // Image ne ce repete pas 
-  background-position: center; // centrer Image 
-  height: 650px; // taille d une Image 
-  
-  display: flex; // mettre tous en meme ligne 
-  justify-content: start;
-  align-items: center;   // centrer le texte 
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 650px;
 
-   .formDiv {
-      background-color: rgba(255, 255, 255, 0.85);
-      width: 370px; // la taille 
-      padding: 15px; 
-      margin-left: 15px; // espace a droite
-      border-radius: 9px; // rendre la forme en rendre 
-      .formLocation {
-        padding: 5px; // espace por tous les Cotes
-        h3 {
-          text-align: center; // cetrer le texte 
-          margin-bottom: 15px; // laisser espace en Bas 
-          font-size:20px;  // langeur de texte 
-        }
+  display: flex;
+  justify-content: start;
+  align-items: center;
+
+  .formDiv {
+    background-color: rgba(255, 255, 255, 0.85);
+    width: 370px;
+    padding: 15px;
+    margin-left: 15px;
+    border-radius: 9px;
+    .formLocation {
+      padding: 5px;
+      .css-dev-only-do-not-override-2q8sxy {
+        padding-bottom: 0.5px !important;
+        margin-bottom: 3px !important;
+      }
+      h3 {
+        text-align: center;
+        margin-bottom: 15px;
+        font-size: 20px;
       }
     }
+  }
+`;
 
-  `;
-  
-  const ServiceSectionS = styled.section`
+const ServiceSectionS = styled.section`
   background-color: white;
   padding: 15px;
   h3 {
@@ -97,9 +104,9 @@ const HeroSectionS = styled.section`
     }
   }
 `;
-
 const Home = () => {
-  
+  const [visible, setVisible] = useState(false);
+
   const agences = [
     {
       value: "1",
@@ -114,7 +121,29 @@ const Home = () => {
       label: "Nabeul",
     },
   ];
-
+  const autresServices = [
+    {
+      id: "1",
+      image: gps,
+      title: "Location voiture avec GPS",
+      details:
+        "Afin de trouver votre chemin et de gagner du temps, louez un vrai GPS à 2 € / jour",
+    },
+    {
+      id: "2",
+      image: chauffeur,
+      title: "Location voiture avec CHAUFFEUR",
+      details:
+        "Pour faciliter vos deplacements en tunisie, faire des excursions sur mesure.",
+    },
+    {
+      id: "3",
+      image: boiteAuto,
+      title: "Location voiture boite automatique",
+      details:
+        "un grand confort à bord, une motorisation silencieuse: Suzuki swift, Kia picanto, Hyundai i10",
+    },
+  ];
   const services = [
     {
       id: "1",
@@ -125,138 +154,141 @@ const Home = () => {
     {
       id: "2",
       image: skoda,
-      price: "Prix à partir de 25 € jour",
-      details: "VOLKSWAGEN POLO",
+      price: "Prix à partir de 23 € jour",
+      details: "SKODA FABIA",
     },
     {
       id: "3",
       image: dacia,
-      price: "Prix à partir de 27 € jour",
-      details: "VOLKSWAGEN POLO SEDAN",
+      price: "Prix à partir de 23 € jour",
+      details: "SKODA FABIA",
     },
     {
       id: "4",
       image: hyundai,
-      price: "Prix à partir de 45 € jour",
-      details: "SKODA OCTAVIA",
-    },
-  ];
-  const autresServices = [
-    {
-      id: "1",
-      image: gps,
-      title: "Location voiture avec GPS",
-      details:"Afin de trouver votre chemin et de gagner du temps, louez un vrai GPS à 2 € / jour",
-    },
-    {
-      id: "2",
-      image: chauffeur,
-      title: "Location voiture avec CHAUFFEUR",
-      details:"Pour faciliter vos deplacements en tunisie, faire des excursions sur mesure.",
-    },
-    {
-      id: "3",
-      image: boiteAuto,
-      title: "Location voiture boite automatique",
-      details:"un grand confort à bord, une motorisation silencieuse: Suzuki swift, Kia picanto, Hyundai i10",
+      price: "Prix à partir de 23 € jour",
+      details: "SKODA FABIA",
     },
   ];
   const onFinish = (values) => {
     // call backend table location
     console.log(values);
   };
-  
   return (
-    <div>   
+    <div>
       <HeroSectionS>
-          <motion.div 
+        <motion.div
           className="formDiv"
           initial={{ y: -610 }}
           animate={{ y: 0 }}
-          transition={{ duration: 1 }}>
-            
-            <Form  name="locationForm" layout="vertical" className="formLocation"  autoComplete="off" onFinish={onFinish} > 
-              
-              <h3>Formulaire de location</h3>
+          transition={{ duration: 1 }}
+        >
+          <Form
+            name="locationForm"
+            layout="vertical"
+            className="formLocation"
+            autoComplete="off"
+            onFinish={onFinish}
+          >
+            <h3>Formulaire de location</h3>
 
-              <Form.Item 
-                label="agence de prise en charge"
-                name="agencePriseEnCharge"
-                rules={[
-                  {
-                    required:true,
-                    message:"Veuillez Choisir l'agence de prise en charge!",
-                  }
-                ]}
+            <Form.Item
+              label="Agence de prise en charge"
+              name="agencePriseEnCharge"
+              rules={[
+                {
+                  required: true,
+                  message: "Veuillez Choisir l'agence de prise en charge!",
+                },
+              ]}
+            >
+              <div>
+                <Select
+                  allowClear
+                  options={agences}
+                  placeholder="Choisir l'agence de prise en charge"
+                />
+                <Checkbox
+                  onChange={() => {
+                    setVisible(!visible);
+                  }}
+                  style={{ fontSize: "12px", marginTop: "5px", color: "#444" }}
                 >
-                 <Select allowClear options={agences} />
-              </Form.Item>
+                  Agence de restitution différente
+                </Checkbox>
+              </div>
+            </Form.Item>
 
-              <Form.Item 
+            {visible && (
+              <Form.Item
                 label="Agence de restitution"
                 name="agenceRestitution"
                 rules={[
                   {
-                    required:true,
+                    required: true,
                     message: "Veuillez Choisir l'agence  de restitution!",
-                  }
+                  },
                 ]}
-              > 
-                <Select allowClear options={agences} />
-              </Form.Item>
-
-              <Form.Item
-               label="Date de retrait"
-               name="dateRetrait"
-               rules={[
-                {
-                  required:true,
-                  message: "Veuillez Choisir la date de retrait!",
-                }
-               ]}
-               >
-                <DatePicker
-                  showTime={{
-                    format: 'HH:mm',
-                  }}
-                  style={{width:"100%"}}
-                  format="DD-MM-YYYY HH:mm"
-                />
-              </Form.Item>
-
-              <Form.Item
-               label="Date de retour"
-               name="dateRetour"
-               rules={[
-                {
-                  required:true,
-                  message:"Veuillez Choisir la date de retour!",
-                }
-               ]}
               >
-                <DatePicker
-                  showTime={{
-                    format: "HH:mm",
-                  }}
-                  style={{ width: "100%" }}
-                  format="DD-MM-YYYY HH:mm"
+                <Select
+                  allowClear
+                  options={agences}
+                  placeholder="Choisir l'agence  de restitution"
                 />
               </Form.Item>
+            )}
 
-              <Form.Item style={{ textAlign: "right" }}>
-                <Button type="primary" htmlType="submit">
-                  Valider
-                </Button>
-              </Form.Item>
+            <Form.Item
+              label="Date de retrait"
+              name="dateRetrait"
+              rules={[
+                {
+                  required: true,
+                  message: "Veuillez Choisir la date de retrait!",
+                },
+              ]}
+            >
+              <DatePicker
+                showTime={{
+                  format: "HH:mm",
+                }}
+                style={{ width: "100%" }}
+                format="DD-MM-YYYY HH:mm"
+                placeholder="Choisir la date de retrait"
+              />
+            </Form.Item>
 
-            </Form>
-          </motion.div>
-          
+            <Form.Item
+              label="Date de retour"
+              name="dateRetour"
+              rules={[
+                {
+                  required: true,
+                  message: "Veuillez Choisir la date de retour!",
+                },
+              ]}
+            >
+              <DatePicker
+                showTime={{
+                  format: "HH:mm",
+                }}
+                style={{ width: "100%" }}
+                format="DD-MM-YYYY HH:mm"
+                placeholder="Choisir la date de retour"
+              />
+            </Form.Item>
+
+            <Form.Item style={{ textAlign: "right" }}>
+              <Button type="primary" htmlType="submit">
+                Valider
+              </Button>
+            </Form.Item>
+          </Form>
+        </motion.div>
       </HeroSectionS>
-      
+
       <ServiceSectionS>
         <h3>Promotion location de voiture en Tunisie</h3>
-        
         <Row gutter={[16, 16]} className="rowService">
           {services.map((item) => (
             <Col key={item.id} xs={24} xl={6} className="colService">
@@ -267,7 +299,6 @@ const Home = () => {
             </Col>
           ))}
         </Row>
-      
         <div className="autresServices">
           <h3>Agence de location voiture en Tunisie</h3>
           <Row gutter={[16, 16]} className="rowService">
@@ -298,7 +329,7 @@ const Home = () => {
               International Djerba Midoun.
             </p>
             <p>
-              Profitez de votre voiture à Tunis , Hammamet ou Djerba
+              <h2>Profitez de votre voiture à Tunis</h2>, Hammamet ou Djerba
               Tunisia Rent Car est votre partenaire de route, qui vous offre un
               service de location voiture Tunisie loin de tous les tracas
               imprévus qui peuvent survenir.
@@ -314,7 +345,7 @@ const Home = () => {
               professionnels.
             </p>
             <p>
-              Louez votre véhicule à un prix pas cher Tunisia Rent Car
+              <h2>Louez votre véhicule à un prix pas cher</h2> Tunisia Rent Car
               fait évoluer ses services d’une façon permanente. Nous offrons à
               nos clients des véhicules neufs, bien entretenues avec zéro défaut
               pour que vous n’ayez pas de surprises lors de vos déplacements.
@@ -333,7 +364,6 @@ const Home = () => {
           </div> 
         </div>
       </ServiceSectionS>
-
     </div>
   );
 };

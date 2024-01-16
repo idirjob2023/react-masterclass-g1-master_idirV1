@@ -66,9 +66,7 @@ const Navbar = () => {
   const [loading, setLoading] = useState(false);
 
   const handleLogout = () => {
-   
     const email = "karim@rent-car.net";
-   
     dispatch(logout(email))
       .then((res) => {
         console.log(res);
@@ -78,8 +76,6 @@ const Navbar = () => {
         console.log(err);
       });
   };
-  
-  
   const items = [
     {
       key: "1",
@@ -103,9 +99,24 @@ const Navbar = () => {
       </div>
 
       <div className="espaceClient">
+        <div className="menu">
+          <Link to="/" className="link">
+            Accueil
+          </Link>
+          <Link to="/prestations" className="link">
+            Prestations
+          </Link>
+          <Link to="/services" className="link">
+            Services
+          </Link>
+          <Link to="/apropos" className="link">
+            A propos
+          </Link>
+        </div>
+
         <Dropdown
-          menu={{ 
-             items,
+          menu={{
+            items,
           }}
           placement="bottom"
           arrow
@@ -113,7 +124,6 @@ const Navbar = () => {
           <Button type="primary">Espace client</Button>
         </Dropdown>
       </div>
-    
     </NavbarS>
   );
 };
