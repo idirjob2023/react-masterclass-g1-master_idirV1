@@ -170,6 +170,7 @@ const Home = () => {
       details: "SKODA FABIA",
     },
   ];
+  
   const onFinish = (values) => {
     // call backend table location
     console.log(values);

@@ -30,16 +30,21 @@ const autoSchema = mongoose.Schema(
       required: [true, "Veuillez inserer le champ transmission"],
     },
 
-    siege: {
+    nbrSiege: {
       type: Number,
       required: [true, "Veuillez inserer le champ siege"],
     },
-    cartegorie: {
+    category: {
       type: String,
       required: [true, "Veuillez inserer le champ cartegorie"],
     },
+
+    status: {
+      type: Boolean,
+      required: [true, "Veuillez inserer le champ disponibilite"],
+    },
     
-    photo: [
+    photos: [
       {
         type: String,
       },

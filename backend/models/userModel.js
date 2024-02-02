@@ -17,7 +17,7 @@ const userSchema=mongoose.Schema(
     password:{
         type:String,
         required:[true, "veuillez inserer votre Password"],
-        // select: false, 
+        // select: false,  
     },
     photo:{
         type:String,

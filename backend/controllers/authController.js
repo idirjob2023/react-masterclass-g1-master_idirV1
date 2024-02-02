@@ -80,9 +80,18 @@ const logout = asyncHandler(async (req, res) => {
   //   });
 });
 
+const login1 = asyncHandler(async (req, res) => {
+  const {email, password} = req.body;
+  const user = await User.find();
+  console.log(user);
+  
+    
+});
+
 module.exports = {
   register,
   login,
+  login1,
   logout,
 };
 
